@@ -2,6 +2,7 @@
 // https://moddota.com/tools/combining-kv-files-using-base
 #base "units/npc_dota_custom_dummy_unit.txt"
 #base "units/npc_dota_custom_illusion_base.txt"
+#base "units/npc_dota_miniboss_custom.txt"
 
 "DOTAUnits"
 {

@@ -1,0 +1,73 @@
+"DOTAUnits"
+{
+	"npc_dota_miniboss_custom"
+	{
+		// General
+		//
+		"BaseClass"					"npc_dota_miniboss"
+		"Model"						"models/props_gameplay/divine_sentinel/divine_sentinel_cube.vmdl"
+		"SoundSet"					"Roshan"
+		"ModelScale"				"0.7"
+		"Level"						"30"
+		"IsAncient"					"1"
+		"CanBeDominated"			"0"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"miniboss_unyielding_shield_custom"
+		"Ability2"					"miniboss_reflect_custom"
+		"Ability3"					""
+		"Ability4"					""
+		"Ability5"					""
+		"Ability6"					""
+		"Ability7"					""
+		"Ability8"					""
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"20"
+		"MagicalResistance"			"55"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"0"
+		"BountyGoldMin"				"250"
+		"BountyGoldMax"				"250"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"110"
+		"HealthBarOffset"			"400"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"1"
+		"StatusHealthRegen"			"20"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1400"
+		"VisionNighttimeRange"		"1400"
+
+		// Inventory
+		//----------------------------------------------------------------
+		"HasInventory"				"1"
+	}
+}

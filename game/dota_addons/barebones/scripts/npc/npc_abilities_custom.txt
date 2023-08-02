@@ -3,6 +3,8 @@
 #base "abilities/dummy_unit_ability.txt"
 #base "abilities/chaos_knight_reality_rift.txt"
 #base "abilities/detonator_conjure_image.txt"
+#base "abilities/roshan.txt"
+#base "abilities/tormentor.txt"
 
 "DOTAAbilities"
 {

@@ -11,13 +11,21 @@ require('events')
 -- filters.lua
 require('filters')
 
+if USE_CUSTOM_ROSHAN then
+	require('components/roshan/init')
+end
+
+if USE_CUSTOM_TORMENTOR then
+	require('components/tormentor/init')
+end
+
 --[[
   This function should be used to set up Async precache calls at the beginning of the gameplay.
 
   In this function, place all of your PrecacheItemByNameAsync and PrecacheUnitByNameAsync.  These calls will be made
   after all players have loaded in, but before they have selected their heroes. PrecacheItemByNameAsync can also
-  be used to precache dynamically-added datadriven abilities instead of items.  PrecacheUnitByNameAsync will 
-  precache the precache{} block statement of the unit and all precache{} block statements for every Ability# 
+  be used to precache dynamically-added datadriven abilities instead of items.  PrecacheUnitByNameAsync will
+  precache the precache{} block statement of the unit and all precache{} block statements for every Ability#
   defined on the unit.
 
   This function should only be called once.  If you want to/need to precache more items/abilities/units at a later
@@ -40,7 +48,7 @@ end
   It can be used to initialize non-hero player state or adjust the hero selection (i.e. force random etc)
 ]]
 function barebones:OnAllPlayersLoaded()
-  DebugPrint("[BAREBONES] All Players have loaded into the game.")
+	DebugPrint("[BAREBONES] All Players have loaded into the game.")
 end
 
 --[[
@@ -96,7 +104,7 @@ function barebones:InitGameMode()
 
 	-- This is multi-team configuration stuff
 	if USE_AUTOMATIC_PLAYERS_PER_TEAM then
-		local num = math.floor(10/MAX_NUMBER_OF_TEAMS)
+		local num = math.floor(10 / MAX_NUMBER_OF_TEAMS)
 		local count = 0
 		for team, number in pairs(TEAM_COLORS) do
 			if count >= MAX_NUMBER_OF_TEAMS then
@@ -160,7 +168,7 @@ function barebones:InitGameMode()
 
 	local gamemode = GameRules:GetGameModeEntity()
 
-	-- Setting the Order filter 
+	-- Setting the Order filter
 	gamemode:SetExecuteOrderFilter(Dynamic_Wrap(barebones, "OrderFilter"), self)
 
 	-- Setting the Damage filter
@@ -195,7 +203,7 @@ function barebones:InitGameMode()
 
 	print("[BAREBONES] initialized.")
 	DebugPrint("[BAREBONES] Done loading the game mode!\n\n")
-	
+
 	-- Increase/decrease maximum item limit per hero
 	Convars:SetInt('dota_max_physical_items_purchase_limit', 64)
 end
