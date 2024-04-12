@@ -16,11 +16,17 @@ end
 
 modifier_miniboss_reflect_custom = modifier_miniboss_reflect_custom or class({})
 
--- function modifier_miniboss_reflect_custom:IsHidden() return true end
+function modifier_miniboss_reflect_custom:IsHidden()
+	return true
+end
 
-function modifier_miniboss_reflect_custom:IsPurgable() return false end
+function modifier_miniboss_reflect_custom:IsDebuff()
+	return false
+end
 
-function modifier_miniboss_reflect_custom:IsPurgeException() return false end
+function modifier_miniboss_reflect_custom:IsPurgable()
+	return false
+end
 
 function modifier_miniboss_reflect_custom:DeclareFunctions()
 	return {
@@ -138,8 +144,22 @@ function modifier_miniboss_reflect_custom:OnTakeDamage(keys)
 		return
 	end
 	
+	-- Count non-illusion enemies
+	local number_of_valid_enemies = 0
+	for _, enemy in pairs(enemies) do
+		if enemy and not enemy:IsNull() and IsValidEntity(enemy) and enemy:IsAlive() and not enemy:IsIllusion() then
+			number_of_valid_enemies = number_of_valid_enemies + 1
+		end
+	end
+	
+	-- When attacker is damaging Tormentor from far away and only ilussions are around
+	-- to prevent division by 0
+	if number_of_valid_enemies == 0 then
+		number_of_valid_enemies = 1
+	end
+	
 	-- Distribute the damage among the present units
-	local reflectedDamage = (damage * self.reflection / 100) / #enemies
+	local reflectedDamage = (damage * self.reflection / 100) / number_of_valid_enemies
 	for _, enemy in pairs(enemies) do
 		if enemy and not enemy:IsNull() and IsValidEntity(enemy) and enemy:IsAlive() and enemy ~= attacker then
 			damageTable.victim = enemy

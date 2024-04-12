@@ -16,38 +16,47 @@ end
 
 modifier_miniboss_unyielding_shield_custom = modifier_miniboss_unyielding_shield_custom or class({})
 
--- function modifier_miniboss_unyielding_shield_custom:IsHidden() return true end
+function modifier_miniboss_unyielding_shield_custom:IsHidden()
+	return false
+end
 
-function modifier_miniboss_unyielding_shield_custom:IsPurgable() return false end
+function modifier_miniboss_unyielding_shield_custom:IsDebuff()
+	return false
+end
 
-function modifier_miniboss_unyielding_shield_custom:IsPurgeException() return false end
+function modifier_miniboss_unyielding_shield_custom:IsPurgable()
+	return false
+end
 
 function modifier_miniboss_unyielding_shield_custom:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT,
 		MODIFIER_PROPERTY_TOOLTIP,
 		MODIFIER_PROPERTY_TOOLTIP2,
+		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
 	}
 end
 
 function modifier_miniboss_unyielding_shield_custom:OnCreated()
 	if not IsServer() then return end
 
-	self.parent = self:GetParent()
-	self.ability = self:GetAbility()
+	local parent = self:GetParent()
+	local ability = self:GetAbility()
 
-	self.parent:EmitSound("Miniboss.Tormenter.Spawn")
+	parent:EmitSound("Miniboss.Tormenter.Spawn")
+
+	self.minArmor = ability:GetSpecialValueFor("min_armor")
 
 	-- This delay is required because the tormentor team is not set yet when the modifier is created
 	GameRules:GetGameModeEntity():SetContextThink(DoUniqueString("delay"), function()
-		local deaths = Tormentors:GetDeaths(self.parent.tormentorTeam)
+		local deaths = Tormentors:GetDeaths(parent.tormentorTeam)
 
-		self.bonusShieldPerDeath = self.ability:GetSpecialValueFor("absorb_bonus_per_death") * deaths
-		self.bonusRegenPerDeath = self.ability:GetSpecialValueFor("regen_bonus_per_death") * deaths
+		self.bonusShieldPerDeath = ability:GetSpecialValueFor("absorb_bonus_per_death") * deaths
+		self.bonusRegenPerDeath = ability:GetSpecialValueFor("regen_bonus_per_death") * deaths
 
-		self.maxShield = self.ability:GetSpecialValueFor("damage_absorb") + self.bonusShieldPerDeath
-		self.shield = self.maxShield
-		self.regenPerSecond = self.ability:GetSpecialValueFor("regen_per_second") + self.bonusRegenPerDeath
+		self.maxShield = ability:GetSpecialValueFor("damage_absorb") + self.bonusShieldPerDeath
+		self.currentShield = self.maxShield
+		self.regenPerSecond = ability:GetSpecialValueFor("regen_per_second") + self.bonusRegenPerDeath
 		self.regenPerSecondThink = self.regenPerSecond * FrameTime()
 
 		self:SetHasCustomTransmitterData(true)
@@ -55,53 +64,99 @@ function modifier_miniboss_unyielding_shield_custom:OnCreated()
 	end, FrameTime())
 end
 
+function modifier_miniboss_unyielding_shield_custom:OnRefresh()
+	self:OnCreated()
+
+	-- Tell the client that we need to get the properties again
+	if IsServer() then self:SendBuffRefreshToClients() end
+end
+
 function modifier_miniboss_unyielding_shield_custom:AddCustomTransmitterData()
 	return {
-		shield = self.shield,
-		regenPerSecond = self.regenPerSecond,
+		currentShield = self.currentShield,
+		maxShield = self.maxShield,
+		regenPerSecond = self.regenPerSecond, -- sent to client only because of MODIFIER_PROPERTY_TOOLTIP2
 	}
 end
 
 function modifier_miniboss_unyielding_shield_custom:HandleCustomTransmitterData(data)
-	self.shield = data.shield
+	self.currentShield = data.currentShield
+	self.maxShield = data.maxShield
 	self.regenPerSecond = data.regenPerSecond
 end
 
 function modifier_miniboss_unyielding_shield_custom:OnIntervalThink()
-	self.shield = math.min(self.shield + self.regenPerSecondThink, self.maxShield)
+	self.currentShield = math.min(self.currentShield + self.regenPerSecondThink, self.maxShield)
 	self:SendBuffRefreshToClients()
 end
 
 function modifier_miniboss_unyielding_shield_custom:GetModifierIncomingDamageConstant(event)
-	if not IsServer() then
-		return self.shield
-	end
-
-	-- block damage
-	local damage = event.damage
-
-	if damage <= 0 then
-		return 0
-	end
-
-	-- EmitSoundOnClient("Miniboss.Tormenter.Target", event.attacker)
-	event.attacker:EmitSound("Miniboss.Tormenter.Target")
-
-	if damage > self.shield then
-		self.shield = 0
-		self:SendBuffRefreshToClients()
-		return -self.shield
+	-- Return the max health on the client if it's a max report, otherwise return the current health
+	if IsClient() then
+		if event.report_max then
+			return self.maxShield
+		else
+			return self.currentShield
+		end
 	else
-		self.shield = self.shield - damage
+		local damage = event.damage
+
+		-- Don't do anything if damage is 0 or somehow negative
+		if damage <= 0 then
+			return 0
+		end
+
+		-- Don't react to damage with HP removal flag
+		if bit.band(event.damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) == DOTA_DAMAGE_FLAG_HPLOSS then
+			return 0
+		end
+
+		-- Don't block more than remaining hp
+		local barrier_hp = self.currentShield
+		local block_amount = math.min(damage, barrier_hp)
+
+		-- Reduce barrier hp
+		self.currentShield = self.currentShield - block_amount
+
+		if block_amount > 0 then
+			-- Visual effect
+			local parent = self:GetParent()
+			SendOverheadEventMessage(nil, OVERHEAD_ALERT_BLOCK, parent, block_amount, nil)
+		end
+
+		-- Tell the client that we need to update the health property
 		self:SendBuffRefreshToClients()
-		return -damage
+
+		-- EmitSoundOnClient("Miniboss.Tormenter.Target", event.attacker)
+		event.attacker:EmitSound("Miniboss.Tormenter.Target")
+
+		return -block_amount
 	end
 end
 
 function modifier_miniboss_unyielding_shield_custom:OnTooltip()
-	return self.shield
+	return self.maxShield
 end
 
 function modifier_miniboss_unyielding_shield_custom:OnTooltip2()
 	return self.regenPerSecond
+end
+
+function modifier_miniboss_unyielding_shield_custom:GetModifierPhysicalArmorBonus()
+    if not IsServer() then return end
+
+	local parent = self:GetParent()
+	if self.checkArmor then
+		return 0
+	else
+		self.checkArmor = true
+		local base_armor = parent:GetPhysicalArmorBaseValue()
+		local current_armor = parent:GetPhysicalArmorValue(false)
+		self.checkArmor = false
+		local min_armor = self.minArmor
+		if current_armor < min_armor then
+			return min_armor - current_armor
+		end
+	end
+	return 0
 end

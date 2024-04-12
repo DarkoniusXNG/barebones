@@ -32,6 +32,7 @@ function Tormentors:OnNPCSpawned(keys)
 			-- removing abilities is required to remove lingering effects
 			spawnedUnit:RemoveAbility("miniboss_unyielding_shield")
 			spawnedUnit:RemoveAbility("miniboss_reflect")
+			spawnedUnit:RemoveAbility("miniboss_radiance")
 
 			-- UTIL_Remove(spawnedUnit) -- crashes the game
 		end

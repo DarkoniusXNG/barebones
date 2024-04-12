@@ -19,6 +19,7 @@
 			"absorb_bonus_per_death"	"200"
 			"regen_per_second"			"100"
 			"regen_bonus_per_death"		"100"
+			"min_armor"                 "0"
 		}
 	}
 
@@ -42,6 +43,27 @@
 
 			"radius"								"1200" // This for some reason is not in the original ability
 			"illusion_damage_pct"					"200" // This for some reason is not in the original ability
+		}
+	}
+
+	"miniboss_radiance_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                     "ability_lua"
+		"ScriptFile"                    "components/tormentor/abilities/miniboss_radiance.lua"
+		"AbilityTextureName"            "miniboss_radiance"
+		"MaxLevel"                      "1"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"                   "DOTA_ABILITY_TYPE_BASIC"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"aura_radius"			"1200"
+			"aura_damage"			"30"
+			"aura_interval"			"0.2"
 		}
 	}
 }

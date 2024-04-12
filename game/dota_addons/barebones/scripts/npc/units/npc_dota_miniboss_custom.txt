@@ -16,7 +16,7 @@
 		//----------------------------------------------------------------
 		"Ability1"					"miniboss_unyielding_shield_custom"
 		"Ability2"					"miniboss_reflect_custom"
-		"Ability3"					""
+		"Ability3"					"miniboss_radiance_custom"
 		"Ability4"					""
 		"Ability5"					""
 		"Ability6"					""
