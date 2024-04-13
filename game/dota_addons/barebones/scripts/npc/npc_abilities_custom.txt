@@ -11,7 +11,6 @@
 	// ability_datadriven example
 	"example_ability"
 	{
-		//"ID"							"80852" // its not really needed
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"holdout_blade_fury"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
