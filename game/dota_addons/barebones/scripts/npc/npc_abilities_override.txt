@@ -51,7 +51,7 @@
   //"item_smoke_of_deceit"          "REMOVE"
   //"item_tango"                    "REMOVE"
   //"item_tango_single"             "REMOVE"
-  //"item_tpscroll"                 "REMOVE"
+  //"item_tpscroll"                 "REMOVE" // DO NOT REMOVE THIS BEFORE DISABLING/CHANGING TP SCROLL SLOT
   //"item_recipe_travel_boots"      "REMOVE"
   //"item_travel_boots"             "REMOVE"
   //"item_recipe_phase_boots"       "REMOVE"
@@ -267,8 +267,10 @@
   //"item_crown"                    "REMOVE"
   //"item_blitz_knuckles"           "REMOVE"
   //"item_fluffy_hat"               "REMOVE"
-  //"item_ring_of_tarrasque"        "REMOVE" // disabled
+  //"item_ring_of_tarrasque"        "REMOVE"
   //"item_voodoo_mask"              "REMOVE"
+  //"item_tiara_of_selemene"        "REMOVE"
+  //"item_cornucopia"               "REMOVE"
   //"item_recipe_orb_of_corrosion"  "REMOVE"
   //"item_orb_of_corrosion"         "REMOVE"
   //"item_recipe_falcon_blade"      "REMOVE"
@@ -291,19 +293,29 @@
   //"item_arcane_blink"             "REMOVE"
   //"item_recipe_boots_of_bearing"  "REMOVE"
   //"item_boots_of_bearing"         "REMOVE"
-  //"item_recipe_wraith_pact"       "REMOVE"
-  //"item_wraith_pact"              "REMOVE"
+  //"item_recipe_wraith_pact"       "REMOVE" // disabled
+  //"item_wraith_pact"              "REMOVE" // disabled
   //"item_recipe_revenants_brooch"  "REMOVE"
   //"item_revenants_brooch"         "REMOVE"
+  //"item_recipe_helm_of_the_overlord"  "REMOVE"
+  //"item_helm_of_the_overlord"     "REMOVE"
+  //"item_recipe_harpoon"           "REMOVE"
+  //"item_harpoon"                  "REMOVE"
+  //"item_recipe_disperser"         "REMOVE"
+  //"item_disperser"                "REMOVE"
+  //"item_recipe_angels_demise"     "REMOVE"
+  //"item_angels_demise"            "REMOVE" // Khanda
+  //"item_recipe_devastator"        "REMOVE"
+  //"item_devastator"               "REMOVE" // Parasma
 
-  // Neutral items
+  // Neutral items - DO NOT REMOVE NEUTRAL ITEMS, IT CAN CAUSE CRASHES, YOU CAN DISABLE THEM in neutral_items.txt
   //"item_ancient_perseverance"     "REMOVE" // unreleased
   //"item_apex"                     "REMOVE"
   //"item_arcane_ring"              "REMOVE"
   //"item_ascetic_cap"              "REMOVE"
   //"item_ballista"                 "REMOVE" // disabled
   //"item_barricade"                "REMOVE" // unreleased
-  //"item_black_powder_bag"         "REMOVE"
+  //"item_black_powder_bag"         "REMOVE" // disabled
   //"item_book_of_shadows"          "REMOVE"
   //"item_bottomless_chalice"       "REMOVE" // unreleased
   //"item_broom_handle"             "REMOVE"
@@ -312,8 +324,8 @@
   //"item_chipped_vest"             "REMOVE" // disabled
   //"item_cloak_of_flames"          "REMOVE"
   //"item_clumsy_net"               "REMOVE" // disabled
-  //"item_craggy_coat"              "REMOVE" // disabled
-  //"item_dagger_of_ristul"         "REMOVE"
+  //"item_craggy_coat"              "REMOVE"
+  //"item_dagger_of_ristul"         "REMOVE" // disabled
   //"item_demonicon"                "REMOVE" // Book of the Dead
   //"item_desolator_2"              "REMOVE" // Stygian Desolator
   //"item_dimensional_doorway"      "REMOVE" // unreleased
@@ -322,11 +334,11 @@
   //"item_elven_tunic"              "REMOVE"
   //"item_enchanted_quiver"         "REMOVE"
   //"item_essence_ring"             "REMOVE" // disabled
-  //"item_ex_machina"               "REMOVE"
+  //"item_ex_machina"               "REMOVE" // disabled
   //"item_eye_of_the_vizier"        "REMOVE"
-  //"item_faded_broach"             "REMOVE" // disabled
+  //"item_faded_broach"             "REMOVE"
   //"item_fallen_sky"               "REMOVE"
-  //"item_flicker"                  "REMOVE"
+  //"item_flicker"                  "REMOVE" // disabled
   //"item_force_boots"              "REMOVE"
   //"item_force_field"              "REMOVE" // Arcanist's Armor
   //"item_fortitude_ring"           "REMOVE" // unreleased
@@ -338,7 +350,6 @@
   //"item_greater_mango"            "REMOVE" // unreleased
   //"item_grove_bow"                "REMOVE"
   //"item_guardian_shell"           "REMOVE" // unreleased
-  //"item_harpoon"                  "REMOVE" // unreleased
   //"item_havoc_hammer"             "REMOVE"
   //"item_heavy_blade"              "REMOVE" // Witchbane
   //"item_helm_of_the_undying"      "REMOVE" // disabled
@@ -367,7 +378,7 @@
   //"item_overflowing_elixir"       "REMOVE" // unreleased
   //"item_paintball"                "REMOVE" // Fae Grenade, disabled
   //"item_paladin_sword"            "REMOVE"
-  //"item_panic_button"             "REMOVE" // Magic Lamp, disabled
+  //"item_panic_button"             "REMOVE" // Magic Lamp
   //"item_penta_edged_sword"        "REMOVE"
   //"item_philosophers_stone"       "REMOVE"
   //"item_phoenix_ash"              "REMOVE" // disabled
@@ -378,7 +389,7 @@
   //"item_princes_knife"            "REMOVE" // disabled
   //"item_psychic_headband"         "REMOVE"
   //"item_pupils_gift"              "REMOVE"
-  //"item_quickening_charm"         "REMOVE"
+  //"item_quickening_charm"         "REMOVE" // disabled
   //"item_quicksilver_amulet"       "REMOVE" // disabled
   //"item_recipe_fallen_sky"        "REMOVE" // disabled
   //"item_recipe_iron_talon"        "REMOVE" // disabled
@@ -395,7 +406,7 @@
   //"item_seer_stone"               "REMOVE"
   //"item_slime_vial"               "REMOVE" // unreleased
   //"item_specialists_array"        "REMOVE"
-  //"item_spell_prism"              "REMOVE"
+  //"item_spell_prism"              "REMOVE" // disabled
   //"item_spider_legs"              "REMOVE" // disabled
   //"item_spy_gadget"               "REMOVE"
   //"item_star_mace"                "REMOVE" // unreleased
@@ -403,14 +414,14 @@
   //"item_the_leveller"             "REMOVE" // disabled
   //"item_third_eye"                "REMOVE" // disabled
   //"item_timeless_relic"           "REMOVE"
-  //"item_titan_sliver"             "REMOVE"
+  //"item_titan_sliver"             "REMOVE" // disabled
   //"item_tome_of_aghanim"          "REMOVE" // disabled
   //"item_trickster_cloak"          "REMOVE"
   //"item_trident"                  "REMOVE" // disabled
   //"item_trusty_shovel"            "REMOVE"
   //"item_unstable_wand"            "REMOVE" // Pig Pole
   //"item_vambrace"                 "REMOVE"
-  //"item_vampire_fangs"            "REMOVE" // disabled
+  //"item_vampire_fangs"            "REMOVE"
   //"item_vengeances_shadow"        "REMOVE" // unreleased
   //"item_venom_gland"              "REMOVE" // unreleased
   //"item_wand_of_sanctitude"       "REMOVE" // unreleased
