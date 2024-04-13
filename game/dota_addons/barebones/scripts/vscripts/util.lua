@@ -155,7 +155,7 @@ function SwapWearable(unit, target_model, new_model)
 end
 
 -- This function checks if a given unit is Roshan, returns boolean value;
-function CDOTA_BaseNPC:IsRoshan()
+function CDOTA_BaseNPC:IsRoshanCustom()
 	if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then
 		return true
 	end
@@ -167,6 +167,32 @@ end
 function CBaseEntity:IsFountain()
 	if self:GetName() == "ent_dota_fountain_bad" or self:GetName() == "ent_dota_fountain_good" then
 		return true
+	end
+
+	return false
+end
+
+function CDOTA_BaseNPC:IsSpiritBearCustom()
+	return string.find(self:GetUnitName(), "npc_dota_lone_druid_bear")
+end
+
+function IsMonkeyKingCloneCustom(entity)
+	if entity.HasModifier == nil then
+		return true
+	end
+
+	local monkey_king_soldier_modifiers = {
+		"modifier_monkey_king_fur_army_soldier_hidden",
+		"modifier_monkey_king_fur_army_soldier",
+		"modifier_monkey_king_fur_army_thinker",
+		"modifier_monkey_king_fur_army_soldier_inactive",
+		"modifier_monkey_king_fur_army_soldier_in_position",
+	}
+
+	for _, v in pairs(monkey_king_soldier_modifiers) do
+		if entity:HasModifier(v) then
+			return true
+		end
 	end
 
 	return false

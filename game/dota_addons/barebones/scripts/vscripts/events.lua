@@ -124,30 +124,6 @@ function barebones:OnHeroInGame(hero)
 		end
 	end
 
-	local function IsMonkeyKingClone(unit)
-		if unit.HasModifier == nil then
-			DebugPrint("[BAREBONES] OnHeroInGame - Spawned hero is not a valid entity")
-			return true
-		end
-
-		local monkey_king_soldier_modifiers = {
-			"modifier_monkey_king_fur_army_soldier_hidden",
-			"modifier_monkey_king_fur_army_soldier",
-			"modifier_monkey_king_fur_army_thinker",
-			"modifier_monkey_king_fur_army_soldier_inactive",
-			"modifier_monkey_king_fur_army_soldier_in_position",
-		}
-
-		for _, v in pairs(monkey_king_soldier_modifiers) do
-		  if unit:HasModifier(v) then
-			DebugPrint("[BAREBONES] OnHeroInGame - Spawned hero is a Monkey King soldier")
-			return true
-		  end
-		end
-
-		return false
-	end
-
 	Timers:CreateTimer(0.5, function()
 		local playerID = hero:GetPlayerID()	-- never nil (-1 by default), needs delay 1 or more frames
 
@@ -167,7 +143,11 @@ function barebones:OnHeroInGame(hero)
 			elseif hero:IsTempestDouble() then
 				DebugPrint("[BAREBONES] OnHeroInGame - Spawned hero is a Tempest Double")
 				return
-			elseif IsMonkeyKingClone(hero) then
+			elseif IsMonkeyKingCloneCustom(hero) then
+				DebugPrint("[BAREBONES] OnHeroInGame - Spawned hero is a Monkey King soldier or invalid entity")
+				return
+			elseif hero:IsSpiritBearCustom() then
+				DebugPrint("[BAREBONES] OnHeroInGame - Spawned hero is a Spirit Bear")
 				return
 			end
 			-- Set some hero stuff on first spawn or on every spawn (custom or not)
@@ -455,10 +435,10 @@ function barebones:OnEntityKilled(keys)
     end
 
 	-- Killed Unit is a hero (not an illusion) and he is not reincarnating
-	if killed_unit:IsRealHero() and not killed_unit:IsTempestDouble() and not killed_unit:IsReincarnating() then
+	if killed_unit:IsRealHero() and not killed_unit:IsTempestDouble() and not killed_unit:IsReincarnating() and not killed_unit:IsSpiritBearCustom() then
 		-- Hero gold bounty update for the killer
 		if USE_CUSTOM_HERO_GOLD_BOUNTY then
-			if killer_unit:IsRealHero() then
+			if killer_unit:IsRealHero() and not killer_unit:IsSpiritBearCustom() and not killer_unit:IsTempestDouble() and not killer_unit:IsClone() and not IsMonkeyKingCloneCustom(killer_unit) then
 				-- Get his killing streak
 				local hero_streak = killer_unit:GetStreak()
 				-- Get his level
