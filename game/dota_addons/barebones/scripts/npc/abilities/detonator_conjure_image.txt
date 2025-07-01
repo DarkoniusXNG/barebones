@@ -14,9 +14,7 @@
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		"FightRecapLevel"				"1"
 		"MaxLevel"               		"1"
-		"AbilitySound"					"Hero_Terrorblade.ConjureImage"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -38,34 +36,20 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"duration"							"60"
+			"illusion_damage_out"				"-20"
+			"illusion_damage_in"				"100"
+			"illusion_damage_dealt" // tooltip only (illusion_damage_out + 100)
 			{
-				"var_type"							"FIELD_FLOAT"
-				"duration"							"60.0"
+				"value"							"80"
+				"CalculateSpellDamageTooltip"	"0"
 			}
-			"02"
+			"illusion_damage_taken" // tooltip only (illusion_damage_in + 100)
 			{
-				"var_type"							"FIELD_FLOAT"
-				"illusion_damage_out"				"-20"
-			}
-			"03"
-			{
-				"var_type"							"FIELD_INTEGER"
-				"illusion_damage_in"				"100"
-			}
-			"04" // tooltip only (illusion_damage_out + 100)
-			{
-				"var_type"							"FIELD_INTEGER"
-				"illusion_damage_dealt"				"80"
-				"CalculateSpellDamageTooltip"		"0"
-			}
-			"05" // tooltip only (illusion_damage_in + 100)
-			{
-				"var_type"							"FIELD_INTEGER"
-				"illusion_damage_taken"				"200"
-				"CalculateSpellDamageTooltip"		"0"
+				"value"							"200"
+				"CalculateSpellDamageTooltip"	"0"
 			}
 		}
 	}

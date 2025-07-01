@@ -118,55 +118,16 @@
 		
 		// Special  
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"			"4"
-			}
-
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_reduction"	"-50"
-			}
-
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"150"
-			}
-
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"speed"				"1800"
-			}
-
-			"05"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"distance"			"900"
-			}
-
-			"06"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage"			"125"
-			}
-
-			"07"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_agi"			"13"
-			}
-
-			"08"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_damage"		"33"
-			}
+			"duration"			"4"
+			"damage_reduction"	"-50"
+			"radius"			"150"
+			"speed"				"1800"
+			"distance"			"900"
+			"damage"			"125"
+			"bonus_agi"			"13"
+			"bonus_damage"		"33"
 		}
 	}
 }

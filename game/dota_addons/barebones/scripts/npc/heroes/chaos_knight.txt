@@ -5,6 +5,6 @@
 	//=================================================================================================================
 	"npc_dota_hero_chaos_knight"
 	{
-		"Ability2"		"chaos_knight_reality_rift_barebones"
+		"Ability2"		"chaos_knight_reality_rift_barebones" // this ability won't be affected by vanilla talents, it's here as an example to show that you can change only 1 thing (in this case second ability) on the hero
 	}
 }

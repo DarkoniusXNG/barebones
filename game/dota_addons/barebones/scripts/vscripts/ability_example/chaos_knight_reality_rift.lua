@@ -1,6 +1,4 @@
-if chaos_knight_reality_rift_barebones == nil then
-	chaos_knight_reality_rift_barebones = class({})
-end
+chaos_knight_reality_rift_barebones = chaos_knight_reality_rift_barebones or class({})
 
 LinkLuaModifier("modifier_chaos_knight_reality_rift_custom", "ability_example/modifier_chaos_knight_reality_rift_custom.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -18,9 +16,9 @@ function chaos_knight_reality_rift_barebones:CastFilterResultTarget(target)
 
 	if default_result == UF_FAIL_MAGIC_IMMUNE_ENEMY then
 		local caster = self:GetCaster()
-		-- Talent that allows Reality Rift to target Spell Immune units ("special_bonus_unique_chaos_knight")
-		local talent = caster:FindAbilityByName("special_bonus_unique_chaos_knight")
-		if talent and talent:GetLevel() > 0 then
+		-- Talent that allows Reality Rift to target Spell Immune units ("special_bonus_unique_chaos_knight_custom_2")
+		local pierces_immunity = self:GetSpecialValueFor("pierces_immunity") == 1
+		if pierces_immunity then
 			return UF_SUCCESS
 		end
 	end

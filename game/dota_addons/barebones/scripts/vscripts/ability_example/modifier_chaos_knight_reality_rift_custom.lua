@@ -12,20 +12,10 @@ function modifier_chaos_knight_reality_rift_custom:IsDebuff()
 	return true
 end
 
--- Modifiers exist both on server and client, so take care what methods you use
+-- Modifiers exist both on server and client, so be careful which methods and functions you use
 function modifier_chaos_knight_reality_rift_custom:OnCreated()
 	local ability = self:GetAbility()
-	local caster = ability:GetCaster()
-	local armor_reduction = ability:GetSpecialValueFor("armor_reduction")
-	
-	-- Talent that increases armor reduction ("special_bonus_unique_chaos_knight_barebones_x")
-	-- special_bonus_unique_chaos_knight_barebones_x doesn't exist on the hero, this is for teaching purposes
-	local talent = caster:FindAbilityByName("special_bonus_unique_chaos_knight_barebones_x")
-	if talent and talent:GetLevel() > 0 then
-		armor_reduction = armor_reduction - math.abs(talent:GetSpecialValueFor("value"))
-	end
-	
-	self.armor_reduction = armor_reduction
+	self.armor_reduction = ability:GetSpecialValueFor("armor_reduction")
 end
 
 modifier_chaos_knight_reality_rift_custom.OnRefresh = modifier_chaos_knight_reality_rift_custom.OnCreated
@@ -37,7 +27,7 @@ function modifier_chaos_knight_reality_rift_custom:DeclareFunctions()
 end
 
 function modifier_chaos_knight_reality_rift_custom:GetModifierPhysicalArmorBonus()
-	return self.armor_reduction
+	return 0 - math.abs(self.armor_reduction)
 end
 
 function modifier_chaos_knight_reality_rift_custom:GetEffectName()

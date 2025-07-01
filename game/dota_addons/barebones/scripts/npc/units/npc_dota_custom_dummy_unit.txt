@@ -27,7 +27,7 @@
 		"AttackRate"        		"1.0"
 		"AttackAnimationPoint"    	"0.5"
 		"AttackAcquisitionRange"  	"800"
-		"AttackRange"       		"600"
+		"AttackRange"       		"1"
 		
 		// Bounty
 		//----------------------------------------------------------------
@@ -55,8 +55,6 @@
 		// Combat
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_GOODGUYS"
-		"CombatClassAttack"     	"DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend"     	"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"   	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
 		
 		// Vision

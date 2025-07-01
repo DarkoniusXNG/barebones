@@ -1,4 +1,4 @@
-LinkLuaModifier("modifier_miniboss_unyielding_shield_custom", "components/tormentor/abilities/miniboss_unyielding_shield.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_miniboss_unyielding_shield_custom", "ability_example/miniboss_unyielding_shield.lua", LUA_MODIFIER_MOTION_NONE)
 
 miniboss_unyielding_shield_custom = miniboss_unyielding_shield_custom or class({})
 
@@ -49,7 +49,7 @@ function modifier_miniboss_unyielding_shield_custom:OnCreated()
 
 	-- This delay is required because the tormentor team is not set yet when the modifier is created
 	GameRules:GetGameModeEntity():SetContextThink(DoUniqueString("delay"), function()
-		local deaths = Tormentors:GetDeaths(parent.tormentorTeam)
+		local deaths = 0
 
 		self.bonusShieldPerDeath = ability:GetSpecialValueFor("absorb_bonus_per_death") * deaths
 		self.bonusRegenPerDeath = ability:GetSpecialValueFor("regen_bonus_per_death") * deaths

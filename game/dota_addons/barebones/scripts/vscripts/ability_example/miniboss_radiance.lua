@@ -1,5 +1,5 @@
-LinkLuaModifier("modifier_miniboss_radiance_custom", "components/tormentor/abilities/miniboss_radiance.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_miniboss_radiance_debuff_custom", "components/tormentor/abilities/miniboss_radiance.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_miniboss_radiance_custom", "ability_example/miniboss_radiance.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_miniboss_radiance_debuff_custom", "ability_example/miniboss_radiance.lua", LUA_MODIFIER_MOTION_NONE)
 
 miniboss_radiance_custom = miniboss_radiance_custom or class({})
 

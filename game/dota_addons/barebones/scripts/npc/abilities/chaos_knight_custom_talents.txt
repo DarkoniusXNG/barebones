@@ -1,0 +1,26 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Reality Rift Armor Reduction talent
+	//=================================================================================================================
+	"special_bonus_unique_chaos_knight_custom_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"special_bonus_base"
+	}
+
+	//=================================================================================================================
+	// Reality Rift Spell/Debuff Immunity Piercing talent
+	//=================================================================================================================
+	"special_bonus_unique_chaos_knight_custom_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"					"ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"special_bonus_base"
+	}
+}

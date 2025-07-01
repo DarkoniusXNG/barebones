@@ -15,10 +15,6 @@ if USE_CUSTOM_ROSHAN then
 	require('components/roshan/init')
 end
 
-if USE_CUSTOM_TORMENTOR then
-	require('components/tormentor/init')
-end
-
 --[[
   This function should be used to set up Async precache calls at the beginning of the gameplay.
 

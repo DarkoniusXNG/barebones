@@ -1,8 +1,6 @@
 ﻿require('libraries/custom_illusions')
 
-if detonator_conjure_image == nil then
-	detonator_conjure_image = class({})
-end
+if detonator_conjure_image = detonator_conjure_image or class({})
 
 function detonator_conjure_image:IsStealable()
 	return true
@@ -16,7 +14,7 @@ function detonator_conjure_image:OnSpellStart()
 	local target = self:GetCursorTarget()
 	local caster = self:GetCaster()
 
-	if target:IsNull() then
+	if not target or target:IsNull() then
 		return
 	end
 
@@ -26,8 +24,23 @@ function detonator_conjure_image:OnSpellStart()
 		local duration = self:GetSpecialValueFor("duration")
 		local damage_dealt = self:GetSpecialValueFor("illusion_damage_out")
 		local damage_taken = self:GetSpecialValueFor("illusion_damage_in")
-		-- Use function from custom_illusions.lua
-		local custom_illusion = target:CreateIllusion(caster, self, duration, nil, damage_dealt, damage_taken, true, 1)
+		if target:IsRealHero() or target:IsSpiritBearCustom() or target:IsTempestDouble() or target:IsClone() then
+			local illu_table = {
+				outgoing_damage = damage_dealt,
+				incoming_damage = damage_taken,
+				bounty_base = 1,
+				bounty_growth = 1,
+				outgoing_damage_structure = damage_dealt,
+				outgoing_damage_roshan = damage_dealt,
+				duration = duration,
+			}
+
+			-- Use Valve's function
+			CreateIllusions(caster, target, illu_table, 1, target:GetHullRadius(), false, true)
+		elseif target.CreateIllusion ~= nil then
+			-- Use function from custom_illusions.lua
+			target:CreateIllusion(caster, self, duration, nil, damage_dealt, damage_taken, true, 1)
+		end
 		-- Sound on the target
 		target:EmitSound("Hero_Terrorblade.ConjureImage")
 	end

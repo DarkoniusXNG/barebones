@@ -180,4 +180,3 @@ CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_7] = 0
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_8] = 0
 
 USE_CUSTOM_ROSHAN                            = false -- Should we use a custom roshan?
-USE_CUSTOM_TORMENTOR                         = false -- Should we use a custom tormentor?

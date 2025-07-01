@@ -1,4 +1,4 @@
-LinkLuaModifier("modifier_miniboss_reflect_custom", "components/tormentor/abilities/miniboss_reflect.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_miniboss_reflect_custom", "ability_example/miniboss_reflect.lua", LUA_MODIFIER_MOTION_NONE)
 
 miniboss_reflect_custom = miniboss_reflect_custom or class({})
 
@@ -60,9 +60,12 @@ function modifier_miniboss_reflect_custom:OnCreated()
 		death = "particles/neutral_fx/miniboss_death_dire.vpcf",
 	}
 
+	self.parent.tormentorTeam = DOTA_TEAM_GOODGUYS
+	-- TODO: Change tormentor team depending on tormentor location
+
 	-- This delay is required because the tormentor team is not set yet when the modifier is created
 	GameRules:GetGameModeEntity():SetContextThink(DoUniqueString("delay"), function()
-		local deaths = Tormentors:GetDeaths(self.parent.tormentorTeam)
+		local deaths = 0
 		self.bonusReflectionPerDeath = self.ability:GetSpecialValueFor("passive_reflection_bonus_per_death") * deaths
 		self.reflection = self.ability:GetSpecialValueFor("passive_reflection_pct") + self.bonusReflectionPerDeath
 

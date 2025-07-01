@@ -159,39 +159,22 @@
 			}
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"duration"						"1"
+			"damage"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"duration"						"1"
-			}
-		  
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"						"400 600 800 1000"
+				"value"						"400 600 800 1000"
 				"CalculateSpellDamageTooltip"	"1"
 			}
-		  
-			"03"
+			"radius"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"radius"						"550 550 600 650"
-				"LinkedSpecialBonus"			"special_bonus_unique_hero_name"
+				"value"						"550 550 600 650"
+				"special_bonus_unique_hero_name"			"+100"
+				"affected_by_aoe_increase"	"1"
 			}
-		  
-			"04"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"distance"						"400 500 600 700"
-			}
-		  
-			"05"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"height"						"100 200 300 400"
-			}
+			"distance"						"400 500 600 700"
+			"height"						"100 200 300 400"
 		}
 	}
 }
