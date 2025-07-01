@@ -1,6 +1,6 @@
 ﻿require('libraries/custom_illusions')
 
-if detonator_conjure_image = detonator_conjure_image or class({})
+detonator_conjure_image = detonator_conjure_image or class({})
 
 function detonator_conjure_image:IsStealable()
 	return true

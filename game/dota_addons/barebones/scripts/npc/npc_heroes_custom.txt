@@ -2,7 +2,7 @@
 // the specified key-value combinations.  Use override_hero <hero_to_override> for this.
 // Tutorial how to use #base:
 // https://moddota.com/tools/combining-kv-files-using-base
-//#base "heroes/chaos_knight.txt"
+// #base "heroes/chaos_knight.txt"
 
 "DOTAHeroes"
 {
@@ -16,7 +16,7 @@
 
 		"Ability1"        	"example_ability"
 		"Ability2"			"detonator_conjure_image"
-		"Ability3"			"ancient_apparition_ice_vortex" 
+		"Ability3"			"ancient_apparition_ice_vortex"
 		"Ability4"        	"ancient_apparition_death_rime" // innates usually go here
 		"Ability5"			"ancient_apparition_cold_feet"
 		"Ability6"			"ancient_apparition_ice_blast" // ultimates usually go here
@@ -27,10 +27,10 @@
 		"Ability11"         "special_bonus_spell_amplify_8"
 		"Ability12"         "special_bonus_hp_350"
 		"Ability13"         "special_bonus_hp_regen_12"
-		"Ability14"         "special_bonus_spell_immunity"
-		"Ability15"         "special_bonus_strength_40"
-		"Ability16"         ""
-		"Ability17"         ""
+		"Ability14"         "special_bonus_movement_speed_30"
+		"Ability15"         "special_bonus_spell_aoe_100"
+		"Ability16"         "special_bonus_strength_40"
+		"Ability17"         "special_bonus_spell_immunity"
 		"Ability18"         ""
 		"Ability19"         ""
 		"Ability20"         ""
@@ -38,6 +38,8 @@
 		"Ability22"         ""
 		"Ability23"         ""
 		"Ability24"         ""
+
+		"AbilityTalentStart"		"10"
 
 		"ArmorPhysical"       		"0"                 	// Physical protection.
 		"MagicalResistance"       	"0"                 	// Magical protection (percentage).
@@ -61,7 +63,7 @@
 		"StatusHealth"        		"1000"                 	// Base health.
 		"StatusHealthRegen"     	"1.5"                 	// Base health regeneration
 		"StatusMana"        		"400"                   // Base mana.
-		"StatusManaRegen"     		"100.0"                 // Base mana regeneration 
+		"StatusManaRegen"     		"100.0"                 // Base mana regeneration
 
 		"VisionDaytimeRange"    	"1800"                  // Range of vision at night time.
 		"VisionNighttimeRange"    	"1800"                  // Range of vision at night time.

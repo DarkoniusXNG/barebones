@@ -23,7 +23,7 @@ if CDOTA_BaseNPC then
 	local origin = position or self:GetAbsOrigin() + RandomVector(150)
 	local illusion_damage_dealt = damage_dealt or 0
 	local illusion_damage_taken = damage_taken or 0
-	local unit_ability_count = math.max(self:GetAbilityCount(), 32)
+	local unit_ability_count = self:GetAbilityCount()
 
 	if controllable == nil then
 		controllable = true
