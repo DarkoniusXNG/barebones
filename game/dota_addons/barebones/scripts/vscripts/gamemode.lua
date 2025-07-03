@@ -1,5 +1,5 @@
 -- This is the primary barebones gamemode script and should be used to assist in initializing your game mode
-BAREBONES_VERSION = "2.0.18"
+BAREBONES_VERSION = "2.1.1"
 
 -- Selection library (by Noya) provides player selection inspection and management from server lua
 require('libraries/selection')

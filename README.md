@@ -4,7 +4,7 @@ Original BMDdota's Barebones can be found [here](https://github.com/bmddota/bare
 
 If you have some questions for me, contact me on ModDota discord or through mail: darko1290@gmail.com.
 
-### Version 2.0.18.
+### Version 2.1.1.
 
 ## Introduction
 Barebones is meant to be a jumping off point for creating a custom game with all the basic stuff taken care of for you.
