@@ -136,10 +136,6 @@ if not Attachments then
 end
 
 function Attachments:start()
-
-  local src = debug.getinfo(1).source
-  --print(src)
-
   self.gameDir = ""
   self.addonName = ""
   self.initialized = true
